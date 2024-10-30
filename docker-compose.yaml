@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  mongo:
+    image: mongo:4.4.4
+    container_name: mongo
+    ports:
+      - 27018:27017
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=admin
+    volumes:
+      - ./mongo-data-4.4:/data/db
+    restart: always
+
+  rmq:
+    image: rabbitmq:3-management
+    restart: always
+    environment:
+      - RABBITMQ_DEFAULT_USER=ilya
+      - RABBITMQ_DEFAULT_PASS=ilya
+    ports:
+      - '15672:15672'
+      - '5672:5672'

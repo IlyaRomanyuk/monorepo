@@ -17,7 +17,7 @@ export class BuyCourseSaga {
     public courseId: string,
     public rmqService: RMQService
   ) {
-    this.setState(PurchaseState.Started, '1');
+    this.setState(user.getCourseState(courseId), courseId);
   }
 
   setState(state: PurchaseState, courseId: string) {

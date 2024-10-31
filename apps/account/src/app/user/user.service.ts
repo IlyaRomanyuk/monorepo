@@ -49,6 +49,7 @@ export class UserService {
     const saga = new BuyCourseSaga(userEntity, courseId, this.rmqService);
     const { user, status } = await saga.getState().checkPayment();
     await this.updateUser(user);
+    console.log(status);
     return { status };
   }
 

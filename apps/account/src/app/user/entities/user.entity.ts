@@ -53,6 +53,13 @@ export class UserEntity implements IUser {
     return this;
   }
 
+  public getCourseState(courseId: string): PurchaseState {
+    return (
+      this.courses.find((c) => c.courseId === courseId)?.purchaseState ??
+      PurchaseState.Started
+    );
+  }
+
   public async setPassword(password: string) {
     const salt = await genSalt(10);
     this.passwordHash = await hash(password, salt);

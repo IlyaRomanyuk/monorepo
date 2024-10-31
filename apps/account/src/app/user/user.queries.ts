@@ -13,7 +13,6 @@ export class UserQueries {
   async userInfo(
     @Body() { id }: AccountUserInfo.Request
   ): Promise<AccountUserInfo.Response> {
-    console.log('0-0-0-00-0-0-0-0');
     const user = await this.userRepository.findUserById(id);
     const profile = new UserEntity(user).getPublicProfile();
     return {
